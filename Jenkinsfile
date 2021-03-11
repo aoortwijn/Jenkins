@@ -1,11 +1,22 @@
-Jenkinsfile (Declarative Pipeline)
 pipeline {
     agent any
     stages {
-        stage('Oefen') {
+        stage('Fluffy Build') {
             steps {
-                echo 'Oefen'
+                echo 'Placeholder'
+                sh 'echo Edited Placeholder'
             }
         }
-    }
+        stage('Fluffy Test'){
+            steps{
+                sh 'sleep 5'
+                sh 'echo Success!'
+            }    
+        }
+        stage ('Fluffy Deploy'){
+            steps{
+                echo 'Placeholder'
+            }    
+        }
+    }   
 }
