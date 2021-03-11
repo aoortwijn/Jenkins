@@ -11,6 +11,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Placeholder'
+                sh './gradlew build'                
             }
         }
         stage('Environment variable'){
@@ -23,6 +24,8 @@ pipeline {
     post {
         always {
             echo 'Always'
+            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+            junit 'build/reports/**/*.xml'
         }
         success {
             echo 'Success'
