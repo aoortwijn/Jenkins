@@ -23,7 +23,18 @@ pipeline {
             steps {
                 sh 'ls'
             }
-        }        
+        }
+        stage('Sanity check'){
+            steps{
+                input "input?"
+            }
+        }
+        stage('Deploy - Staging'){
+            steps{
+                sh './deploy staging'
+            }
+        }
+                
     }
     post {
         always {
@@ -36,9 +47,6 @@ pipeline {
         }
         success {
             echo 'Success'
-            mail to: 'amberoortwijn@gmail.com',
-                subject: "Success Jenkins",
-                body: "even testen toch"
         }
         failure{
             echo 'Failure'
