@@ -9,7 +9,13 @@ pipeline {
     }
     post {
         always {
-            echo 'This will always run'
+            echo 'Always'
+        }
+        success {
+            echo 'Success'
+        }
+        failure{
+            echo 'Failure'
         }
     }
 }
