@@ -37,8 +37,8 @@ pipeline {
         success {
             echo 'Success'
             mail to: 'amberoortwijn@gmail.com',
-            subject: "Success Jenkins"
-            body: "even testen toch"
+                subject: "Success Jenkins",
+                body: "even testen toch"
         }
         failure{
             echo 'Failure'
