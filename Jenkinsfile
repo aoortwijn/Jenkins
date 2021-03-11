@@ -10,8 +10,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                echo 'Placeholder'
-                sh './gradlew build'                
+                echo 'Placeholder'               
             }
         }
         stage('Environment variable'){
