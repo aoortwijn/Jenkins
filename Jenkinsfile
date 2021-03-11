@@ -19,21 +19,26 @@ pipeline {
                 sh 'printenv'
             }
         }
-        stage('Artifacts'){
-            steps{
-                sh './jenkins/build.sh'
-                archiveArtifacts 'target/*.jar'
+        stage('No-op'){
+            steps {
+                sh 'ls'
             }
-        }
+        }        
     }
     post {
         always {
             echo 'Always'
+// kan locatie niet vinden, hoe werkt dat?
             // archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
             // junit 'build/reports/**/*.xml'
+            deleteDir() 
+
         }
         success {
             echo 'Success'
+            mail to: 'amberoortwijn@gmail.com',
+            subject: "Success Jenkins"
+            body: "even testen toch"
         }
         failure{
             echo 'Failure'
