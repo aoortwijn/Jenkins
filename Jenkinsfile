@@ -19,12 +19,18 @@ pipeline {
                 sh 'printenv'
             }
         }
+        stage('Artifacts'){
+            steps{
+                sh './jenkins/build.sh'
+                archiveArtifacts 'target/*.jar'
+            }
+        }
     }
     post {
         always {
             echo 'Always'
             // archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
-            junit 'build/reports/**/*.xml'
+            // junit 'build/reports/**/*.xml'
         }
         success {
             echo 'Success'
