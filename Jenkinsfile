@@ -1,9 +1,22 @@
 pipeline {
-    agent any
+    agent {
+        label '!windows'
+    }
+
+    environment {
+        ENV_1 = "Environment variable"
+    }
+
     stages {
         stage('Test') {
             steps {
                 echo 'Placeholder'
+            }
+        }
+        stage('Environment variable'){
+            steps{
+                echo "Environment ${ENV_1}"
+                sh 'printenv'
             }
         }
     }
